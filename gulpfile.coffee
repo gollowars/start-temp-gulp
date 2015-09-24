@@ -3,12 +3,15 @@ coffee = require 'gulp-coffee'
 browserSync = require 'browser-sync'
 watch = require 'gulp-watch'
 sass = require 'gulp-sass'
+data = require 'gulp-data'
+jade = require 'gulp-jade'
 runSequence = require 'run-sequence'
 concat = require 'gulp-concat'
 uglify = require 'uglify-js'
 rename = require 'gulp-rename'
 plumber = require 'gulp-plumber'
 notify = require 'gulp-notify'
+
 
 
 # notification
@@ -82,6 +85,18 @@ gulp.task 'css-opt',->
   return
 
 ###########
+# jade
+###########
+gulp.task 'jade',->
+  gulp.src ['assets/jade/**/*.jade', '!assets/jade/**/layout.jade']
+  .pipe(data((file) ->
+    require('./assets/data/')
+  ))
+  .pipe jade({pretty: true})
+  .pipe gulp.dest 'public/'
+
+
+###########
 # default
 ###########
 gulp.task 'default', ['bs'],->
@@ -89,5 +104,5 @@ gulp.task 'default', ['bs'],->
     gulp.start 'js-opt','bsReload'
   watch 'assets/sass/*.scss',->
     gulp.start 'css-opt','bsReload'
-  watch 'public/index.html', ->
-    gulp.start 'bsReload'
+  watch 'assets/jade/**/*.jade', ->
+    gulp.start 'jade','bsReload'
