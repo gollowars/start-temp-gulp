@@ -54,8 +54,7 @@
 	  $('body').css({
 	    background: 'yellow'
 	  });
-	  sample();
-	  return console.log('main!dayo!!');
+	  return sample();
 	});
 
 

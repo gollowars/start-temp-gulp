@@ -1,0 +1,23 @@
+{
+  "name": "start-temp-gulp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gollowars/start-temp-gulp",
+  "authors": [
+    "Yoshizumi Ashikawa"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "jp-prefecture": "~0.0.9"
+  }
+}
